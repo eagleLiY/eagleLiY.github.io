@@ -1,0 +1,2 @@
+webpackJsonp([60335399758886],{90:function(t,e){t.exports={data:{site:{siteMetadata:{title:"gatsby-starter-typescript-plus",description:"A starter kit for TypeScript-based Gatsby projects with sensible defaults."}}},layoutContext:{}}}});
+//# sourceMappingURL=path----498a5364353e07349324.js.map
