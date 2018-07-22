@@ -1,0 +1,2 @@
+webpackJsonp([0x9b544cfa2a85],{701:function(a,e){a.exports={data:{page:{id:"/Users/liying/canway/zhiwenBlog/eagleBlog/content/pages/success/index.md absPath of file >>> MarkdownRemark",html:"<p>Thank you. <br />\nI will answer to your message as soon as possible.</p>",frontmatter:{title:"Success"}},site:{siteMetadata:{facebook:{appId:"123"}}}},pathContext:{slug:"/success/"}}}});
+//# sourceMappingURL=path---success-d539d8dbfdaf01211062.js.map
