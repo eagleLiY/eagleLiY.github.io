@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import FaArrowDown from "react-icons/lib/fa/arrow-down";
+import pintDown from "../../images/gif/point.gif";
 
 const Hero = props => {
   const { scrollToContent, backgrounds, theme } = props;
@@ -9,21 +9,32 @@ const Hero = props => {
   return (
     <React.Fragment>
       <section className="hero">
-        <h1>Eagle's Blog</h1>
+        <h1>NEXT IS NOW</h1>
+        <p className="bannerDescription">What would happen next ?</p>
         <button
           onClick={scrollToContent}
           aria-label="scroll"
+          className="arrowDownMobile"
         >
-          <FaArrowDown />
+          <img src={pintDown} width="17"  />
         </button>
       </section>
+      <div className="bannerDownPoint">
+        <button
+          onClick={scrollToContent}
+          aria-label="scroll"
+          className="arrowDownDesktop"
+        >
+          <img src={pintDown} width="17"  />
+        </button>
+      </div>
       {/* --- STYLES --- */}
       <style jsx>{`
         .hero {
           align-items: center;
           background: ${theme.hero.background};
           background-image: url(${backgrounds.mobile});
-          background-size: cover;
+          background-size: 100%;
           background-repeat: no-repeat;
           color: ${theme.text.color.primary.inverse};
           display: flex;
@@ -38,7 +49,7 @@ const Hero = props => {
         h1 {
           text-align: center;
           font-size: ${theme.hero.h1.size};
-          margin: ${theme.space.stack.l};
+          margin: ${theme.space.stack.m};
           color: ${theme.hero.h1.color};
           line-height: ${theme.hero.h1.lineHeight};
           text-remove-gap: both 0 "Open Sans";
@@ -58,6 +69,22 @@ const Hero = props => {
               margin: 0 0 0 ${theme.space.xs};
             }
           }
+        }
+
+        .bannerDescription {
+          color: ${theme.hero.h1.color};
+          font-size: 20px;
+          font-weight: 300;
+          margin: ${theme.space.stack.l};
+        }
+
+        .arrowDownMobile {
+          display: block;
+        }
+
+        .bannerDownPoint {
+          text-align: center;
+          display: none;
         }
 
         button {
@@ -112,12 +139,21 @@ const Hero = props => {
         @from-width desktop {
           .hero {
             background-image: url(${backgrounds.desktop});
-            min-height: 80vh;
+            min-height: 75vh;
+            padding-bottom: 0;
           }
 
           h1 {
             max-width: 80%;
             font-size: ${`calc(${theme.hero.h1.size} * 1.5)`};
+          }
+
+          .arrowDownMobile {
+            display: none;
+          }
+
+          .bannerDownPoint {
+            display: block;
           }
 
           button {

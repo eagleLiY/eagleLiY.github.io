@@ -44,7 +44,7 @@ const Blog = props => {
         }
         @above desktop {
           ul {
-            max-width: ${theme.text.maxWidth.desktop};
+            max-width: 80vw;
           }
         }
       `}</style>

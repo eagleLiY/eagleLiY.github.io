@@ -6,6 +6,7 @@ author: eagle
 ---
 
 负面情绪在我们的生活中是经常遇到的。
+
 ![](./bad.jpeg)
 <iframe width="720" height="405" src="https://player.vimeo.com/video/134128443?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0" allowfullscreen=""></iframe>
 
