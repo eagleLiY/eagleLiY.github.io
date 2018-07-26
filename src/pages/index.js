@@ -5,6 +5,8 @@ import { ThemeContext } from "../layouts";
 import Blog from "../components/Blog";
 import Hero from "../components/Hero";
 import Seo from "../components/Seo";
+import subBanner from '../images/png/newBanner.png';
+
 
 class IndexPage extends React.Component {
   separator = React.createRef();
@@ -45,8 +47,9 @@ class IndexPage extends React.Component {
             <Hero scrollToContent={this.scrollToContent} backgrounds={backgrounds} theme={theme} />
           )}
         </ThemeContext.Consumer>
+        <img className="subBanner" src={subBanner} />
 
-        <hr ref={this.separator} />
+        {/* <hr ref={this.separator} /> */}
         <ThemeContext.Consumer>
           {theme => <Blog posts={posts} theme={theme} />}
         </ThemeContext.Consumer>
@@ -57,6 +60,11 @@ class IndexPage extends React.Component {
           hr {
             margin: 0;
             border: 0;
+          }
+          .subBanner {
+            width: 100%;
+            position: relative;
+            bottom: -6px;
           }
         `}</style>
       </React.Fragment>

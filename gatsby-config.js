@@ -110,6 +110,16 @@ module.exports = {
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
           {
+            resolve: "gatsby-remark-embed-video",
+            options: {
+              width: 800,
+              ratio: 1.77, // Optional: Defaults to 16/9 = 1.77
+              height: 400, // Optional: Overrides optional.ratio
+              related: false, //Optional: Will remove related videos from the end of an embedded YouTube video.
+              noIframeBorder: true //Optional: Disable insertion of <style> border: 0
+            }
+          },    
+          {
             resolve: "gatsby-remark-emojis",
             options: {
               // Deactivate the plugin globally (default: true)
@@ -128,7 +138,7 @@ module.exports = {
                 width: "25px"
               }
             }
-          }
+          },
         ]
       }
     },

@@ -26,7 +26,7 @@ const Blog = props => {
       <style jsx>{`
         .main {
           padding: 0 ${theme.space.inset.default};
-          background-color: #000;
+          background-color: #1C1C1C;
         }
 
         ul {
