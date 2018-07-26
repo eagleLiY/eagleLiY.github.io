@@ -23,36 +23,38 @@ const Item = props => {
       }
     }
   } = props;
-  console.log(excerpt);
+
   return (
     <React.Fragment>
       <li>
-        
-          <div className="blogItem">
-            <div className="blogItemContent">
-              <h1 className="blogItemTitle">
-                {title}
-              </h1>
-              <p className="meta">
+        <div className="blogItem">
+          <div className="blogItemContent">
+            <h1 className="blogItemTitle">{title}</h1>
+            {/* <p className="meta">
+              <span>
+                <FaCalendar size={18} /> {prefix}
+              </span>
+              <span>
+                <FaUser size={18} /> {author}
+              </span>
+              {category && (
                 <span>
-                  <FaCalendar size={18} /> {prefix}
+                  <FaTag size={18} /> {category}
                 </span>
-                <span>
-                  <FaUser size={18} /> {author}
-                </span>
-                {category && (
-                  <span>
-                    <FaTag size={18} /> {category}
-                  </span>
-                )}
-              </p>
-              <p>{excerpt}</p>
+              )}
+            </p> */}
+            <p className="meta">{excerpt}</p>
+
+            <div className="blogLinkContainer">
+              <Link to={slug} key={slug} className="link blogLink">
+                阅读更多
+              </Link>
             </div>
-            <Img className="blogItemImage" sizes={sizes} />
           </div>
-          <Link to={slug} key={slug} className="link">
-            阅读更多
-          </Link>
+          <div className="blogImageContainer">
+            <Img sizes={sizes} />
+          </div>
+        </div>
       </li>
 
       {/* --- STYLES --- */}
@@ -64,13 +66,23 @@ const Item = props => {
         }
 
         .blogItemContent {
-          max-width: 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          max-width: 100%;
         }
         .blogItemTitle {
+          height: 42px;
           font-size: 24px;
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
+          color: #fff;
+        }
+
+        .blogLinkContainer {
+          margin-top: 30px;
+          padding: 0 10px;
         }
 
         .link {
@@ -78,30 +90,36 @@ const Item = props => {
           height: 44px;
           line-height: 44px;
           border: 1px solid #fff;
-          
+          margin-top: 30px;
         }
-       
+
         :global(.link) {
-          width: 100%;
-          color: ${theme.text.color.primary};
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 128px;
+          height: 44px;
+          border: 1px solid #fff;
+          color: #fff;
+          font-size: 14px;
         }
 
         li {
           border: 1px solid transparent;
           border-radius: ${theme.size.radius.default};
-          margin: ${`calc(${theme.space.default} * 2) 0 calc(${theme.space.default} * 3)`};
+          margin: ${`calc(${theme.space.default} * 2) 0 calc(${
+            theme.space.default
+          } * 3)`};
           padding: ${theme.space.inset.s};
           position: relative;
           transition: all ${theme.time.duration.default};
           background: transparent;
 
           :global(.gatsby-image-outer-wrapper) {
-            width: 400px;
             border-radius: ${theme.size.radius.default};
             overflow: hidden;
           }
-          :global(.gatsby-image-outer-wrapper img) {
-            z-index: -1;
+          :global(.gatsby-image-outer-wrapper) {
           }
         }
 
@@ -122,6 +140,7 @@ const Item = props => {
           font-size: 0.8em;
           padding: ${theme.space.m} ${theme.space.s};
           background: transparent;
+          color: #fff;
 
           :global(svg) {
             fill: ${theme.icon.color};
@@ -132,6 +151,7 @@ const Item = props => {
             display: flex;
             text-transform: uppercase;
             margin: ${theme.space.xs} ${theme.space.s} ${theme.space.xs} 0;
+            color: #fff;
           }
         }
 
@@ -141,9 +161,15 @@ const Item = props => {
           text-remove-gap: both;
         }
 
+        .blogImageContainer {
+          margin-top: 20px;
+        }
+
         @from-width tablet {
           li {
-            margin: ${`calc(${theme.space.default} * 3) 0 calc(${theme.space.default} * 4)`};
+            margin: ${`calc(${theme.space.default} * 3) 0 calc(${
+              theme.space.default
+            } * 4)`};
             padding: ${theme.space.default};
 
             &::after {
@@ -159,7 +185,9 @@ const Item = props => {
 
           h1 {
             font-size: ${`calc(${theme.blog.h1.size} * 1.2)`};
-            padding: ${`calc(${theme.space.default} * 1.5) ${theme.space.default} 0`};
+            padding: ${`calc(${theme.space.default} * 1.5) ${
+              theme.space.default
+            } 0`};
             transition: all 0.5s;
           }
           .meta {
@@ -171,7 +199,9 @@ const Item = props => {
         }
         @from-width desktop {
           li {
-            margin: ${`calc(${theme.space.default} * 4) 0 calc(${theme.space.default} * 5)`};
+            margin: ${`calc(${theme.space.default} * 4) 0 calc(${
+              theme.space.default
+            } * 5)`};
             padding: 0 0 ${`calc(${theme.space.default} * 2)`};
 
             &::after {
@@ -183,6 +213,19 @@ const Item = props => {
                 top: ${`calc(${theme.space.default} * -2.75)`};
               }
             }
+
+            :global(.gatsby-image-outer-wrapper) {
+              width: 40vw;
+            }
+          }
+
+          .blogImageContainer {
+            margin-top: 0;
+          }
+
+          .blogLinkContainer {
+            margin-top: 30px;
+            padding: 0 40px;
           }
 
           :global(.blogItemLink:first-child) > li::before {
@@ -190,21 +233,25 @@ const Item = props => {
           }
           h1 {
             font-size: 2.5em;
-            padding: ${`calc(${theme.space.default} * 1.2) calc(${theme.space.default} * 2) 0`};
+            padding: ${`calc(${theme.space.default} * 1.2) calc(${
+              theme.space.default
+            } * 2) 0`};
             padding-top: 0;
           }
           .meta {
-            padding: ${`calc(${theme.space.default} * 1.5) calc(${theme.space.default} * 2)
+            padding: ${`calc(${theme.space.default} * 1.5) calc(${
+              theme.space.default
+            } * 2)
               calc(${theme.space.default} * 0.5)`};
           }
           p {
             padding: ${`0 calc(${theme.space.default} * 2)`};
-          } 
+          }
 
           .blogItem {
             flex-direction: row;
           }
-  
+
           .blogItemContent {
             max-width: 50%;
           }
@@ -215,6 +262,9 @@ const Item = props => {
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+          }
+          .blogItemContent {
+            max-width: 50%;
           }
         }
       `}</style>
