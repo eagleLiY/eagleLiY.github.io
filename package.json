@@ -24,7 +24,6 @@
     "gatsby-plugin-styled-jsx": "^2.0.6",
     "gatsby-plugin-styled-jsx-postcss": "^1.1.2",
     "gatsby-remark-copy-linked-files": "^1.5.37",
-    "gatsby-remark-embed-video": "^1.4.0",
     "gatsby-remark-emojis": "^0.2.3",
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "^1.5.67",

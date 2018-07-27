@@ -46,18 +46,17 @@ const Item = props => {
         @from-width desktop {
           .item {
             :global(a) {
-              color: color(white alpha(-20%));
               padding: ${theme.space.inset.s};
               transition: all ${theme.time.duration.default};
               border-radius: ${theme.size.radius.small};
             }
 
             :global(.homepage):not(.fixed) & :global(a) {
-              color: ${theme.color.neutral.white};
+              color: ${theme.color.neutral.gray.d};
             }
 
-            :global(a:hover) {
-              color: ${theme.color.neutral.white};
+            :global(.fixed) & :global(a:hover) {
+              color: ${theme.color.neutral.gray.a};
             }
 
             :global(svg) {
@@ -65,7 +64,16 @@ const Item = props => {
             }
 
             &:hover :global(svg) {
-              fill: white;
+              fill: ${theme.color.neutral.gray.a};
+              opacity: 1;
+
+              :global(.hero) & :global(svg) {
+                fill: green;
+              }
+            }
+
+            :global(.homepage):not(.fixed) &:hover :global(svg) {
+              fill: ${theme.color.neutral.gray.k};
               opacity: 1;
 
               :global(.hero) & :global(svg) {

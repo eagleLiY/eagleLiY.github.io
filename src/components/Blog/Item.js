@@ -119,8 +119,7 @@ const Item = props => {
             border-radius: ${theme.size.radius.default};
             overflow: hidden;
           }
-          :global(.gatsby-image-outer-wrapper) {
-          }
+        
         }
 
         h1 {
